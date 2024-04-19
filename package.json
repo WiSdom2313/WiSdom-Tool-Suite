@@ -17,6 +17,6 @@
     "changelogUrl": "https://github.com/WiSdom2313/WiSdom-Tool-Suite/blob/main/CHANGELOG.md",
     "licenseUrl": "https://github.com/WiSdom2313/WiSdom-Tool-Suite/blob/main/LICENSE",
     "dependencies": {
-        "com.cysharp.unitask": "https://github.com/Cysharp/UniTask.git?path=src/UniTask/Assets/Plugins/UniTask"
+        "com.cysharp.unitask": "2.5.4"
     }
 }
