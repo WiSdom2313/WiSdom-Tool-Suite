@@ -13,8 +13,8 @@ public class PluginManagerEditor : EditorWindow
     public static void ShowWindow()
     {
         var window = GetWindow<PluginManagerEditor>("Plugin Manager");
-        window.maxSize = new Vector2(500, 400);
-        window.minSize = new Vector2(400, 400);
+        window.minSize = new Vector2(500, 400);
+        window.maxSize = new Vector2(600, 800);
     }
     private GUIStyle headerStyle = null;
 

@@ -16,9 +16,6 @@ MonoBehaviour:
   - Name: 1
     IsEnable: 0
     DefineSymbol: USE_ADDRESSABLES
-  - Name: 2
-    IsEnable: 0
-    DefineSymbol: USE_UNITASK
   - Name: 3
     IsEnable: 0
     DefineSymbol: USE_MESSAGEPACK

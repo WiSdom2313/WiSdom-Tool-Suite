@@ -11,10 +11,12 @@
     "category": "Unity",
     "repository": {
         "type": "git",
-        "url": "https://github.com/S2Wind/WiSdom-Tool-Suite.git"
+        "url": "https://github.com/WiSdom2313/WiSdom-Tool-Suite.git"
     },
-    "documentationUrl": "https://github.com/S2Wind/WiSdom-Tool-Suite/blob/main/README.md",
-    "changelogUrl": "https://github.com/S2Wind/WiSdom-Tool-Suite/blob/main/CHANGELOG.md",
-    "licenseUrl": "https://github.com/S2Wind/WiSdom-Tool-Suite/blob/main/LICENSE",
-    "dependencies": {}
+    "documentationUrl": "https://github.com/WiSdom2313/WiSdom-Tool-Suite/blob/main/README.md",
+    "changelogUrl": "https://github.com/WiSdom2313/WiSdom-Tool-Suite/blob/main/CHANGELOG.md",
+    "licenseUrl": "https://github.com/WiSdom2313/WiSdom-Tool-Suite/blob/main/LICENSE",
+    "dependencies": {
+        "com.cysharp.unitask": "https://github.com/Cysharp/UniTask.git?path=src/UniTask/Assets/Plugins/UniTask"
+    }
 }

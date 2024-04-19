@@ -35,6 +35,5 @@ public enum ePlugin
 {
     None,
     Addressables,
-    UniTaskV2,
     MessagePack,
 }
