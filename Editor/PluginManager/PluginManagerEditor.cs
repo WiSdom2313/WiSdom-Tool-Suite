@@ -21,6 +21,10 @@ public class PluginManagerEditor : EditorWindow
     void OnEnable()
     {
         pluginConfig = AssetDatabase.LoadAssetAtPath<PluginConfig>("Assets/WiSdomToolSuite/Editor/PluginManager/PluginConfig.asset");
+        foreach (var plugin in pluginConfig.plugins)
+        {
+            plugin.ChangeDefineSymbol();
+        }
     }
 
     void OnGUI()

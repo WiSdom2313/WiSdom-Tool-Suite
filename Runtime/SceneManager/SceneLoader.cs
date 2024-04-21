@@ -4,7 +4,7 @@ using WiSdom.DesignPattern;
 
 namespace WiSdom.Core
 {
-    public class SceneLoader : Singleton<SceneLoader>
+    public class SceneLoader : SingletonMonoBehaviour<SceneLoader>
     {
 
         protected override void Awake()

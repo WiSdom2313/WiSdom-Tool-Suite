@@ -35,5 +35,5 @@ public enum ePlugin
 {
     None,
     Addressables,
-    MemeryPackJson,
+    MemoryPackJson,
 }

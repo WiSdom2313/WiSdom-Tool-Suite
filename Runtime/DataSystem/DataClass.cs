@@ -2,17 +2,17 @@ using System;
 using MessagePack;
 namespace WiSdom.SaveSystem.Data
 {
-    [MessagePackObject]
     [Serializable]
+    [MessagePackObject]
     public class PlayerData
     {
-        [Key(0)]
+        [Key("Level")]
         public int Level = 0;
         // Add more properties as needed
     }
 
-    [MessagePackObject]
     [Serializable]
+    [MessagePackObject]
     public class SettingsData
     {
         [Key(0)]

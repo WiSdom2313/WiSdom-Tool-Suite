@@ -5,14 +5,10 @@ using UnityEngine;
 
 public class WiSdomTool
 {
-    [MenuItem("WiSdom/Generate Code")]
-    private static void GenerateCodeMenuItem()
+    [MenuItem("WiSdom/Folder/Open Data")]
+    public static void OpenDataFolder()
     {
-        CodeGenerator.GenerateClass();
-    }
-    [MenuItem("WiSdom/Generate DataManager")]
-    public static void GenerateDataManager()
-    {
-        DataManagerCodeGenerator.GenerateDataManager();
+        string path = Application.persistentDataPath + "/";
+        EditorUtility.RevealInFinder(path);
     }
 }
