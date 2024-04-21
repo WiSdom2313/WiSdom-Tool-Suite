@@ -23,7 +23,7 @@ public class PluginData
     // Change DefineSymbol when Name is changed
     public void ChangeDefineSymbol()
     {
-        if(Name == ePlugin.None)
+        if (Name == ePlugin.None)
         {
             DefineSymbol = "";
             return;
@@ -35,5 +35,5 @@ public enum ePlugin
 {
     None,
     Addressables,
-    MessagePack,
+    MemeryPackJson,
 }
