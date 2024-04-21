@@ -4,10 +4,12 @@ namespace WiSdom.SaveSystem.Data
 {
     [Serializable]
     [MessagePackObject]
-    public class PlayerData
+    public class VersionData
     {
-        [Key("Level")]
-        public int Level = 0;
+        [Key("Version")]
+        public string Version = "0.1.0";
+        [Key("Number")]
+        public int Number = 1;
         // Add more properties as needed
     }
 
@@ -27,6 +29,19 @@ namespace WiSdom.SaveSystem.Data
         public bool SFX = true;
         [Key(5)]
         public float SFXVolume = 100;
+        [Key(6)]
+        public bool Vibration = true;
         // Add more settings as needed
+    }
+
+    [Serializable]
+    [MessagePackObject]
+    public class UserInfo
+    {
+        [Key(0)]
+        public string Name;
+        [Key(1)]
+        public int Age;
+        // Add more player data as needed
     }
 }

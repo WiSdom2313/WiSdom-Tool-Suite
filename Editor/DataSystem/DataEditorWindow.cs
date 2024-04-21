@@ -67,17 +67,31 @@ public class DataEditorWindow : EditorWindow
             AssetDatabase.OpenAsset(AssetDatabase.LoadAssetAtPath<MonoScript>(path));
         }
         GUILayout.EndHorizontal();
-        GUILayout.Label("Generate fields", EditorStyles.helpBox);
+        GUILayout.Label("Generate Script using Roslyn", EditorStyles.helpBox, GUILayout.ExpandWidth(true));
         if (GUILayout.Button("Update Script"))
         {
             GenerateDataManager();
         }
-        // Display all data
 
         GUILayout.EndVertical();
+        // Display all data
+
+        GUILayout.Space(10);
+        // Display flags
+        EditorGUI.BeginDisabledGroup(true);
+        EditorGUILayout.Toggle("Is All Data Loaded", DataManager.ISALLDATALOADED);
+        EditorGUILayout.Toggle("Is Data Changed", DataManager.ISDATASAVING);
+        EditorGUI.EndDisabledGroup();
+        // Optional: Display and allow editing of all data
+        // Example: Display and edit PlayerData
+
+
 
         EditorGUILayout.Space();
     }
+
+
+    #region Generate DataManager
 
     private void GenerateDataManager()
     {
@@ -113,19 +127,18 @@ public class DataEditorWindow : EditorWindow
         foreach (var classInfo in classes)
         {
             string fieldDeclaration = $"\n\t\tpublic {classInfo.Name} {classInfo.Name};";
-            // Check if field already exists anywhere in the DataManager file
-            if (!existingCode.Contains(classInfo.Name))
-            {
-                fieldGenerators += fieldDeclaration;
-            }
+            fieldGenerators += fieldDeclaration;
         }
+        fieldGenerators += "\n\t\t";
 
-        // Append new fields at the end or a specific location if needed
+        // replace new fields at the end or a specific location if needed
         if (!string.IsNullOrEmpty(fieldGenerators))
         {
-            // Example: Append directly before the class closing brace
             int insertionIndex = existingCode.IndexOf("#region Field Generators") + "#region Field Generators".Length;
+            int endIndex = existingCode.IndexOf("#endregion", insertionIndex);
+            existingCode = existingCode.Remove(insertionIndex, endIndex - insertionIndex);
             existingCode = existingCode.Insert(insertionIndex, fieldGenerators);
+
             Debug.Log("DataManager updated with new fields.");
         }
         else
@@ -231,4 +244,7 @@ public class DataEditorWindow : EditorWindow
         File.WriteAllText(filePath, existingCode);
 
     }
+
+    #endregion
+
 }
