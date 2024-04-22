@@ -14,7 +14,9 @@ public class DataEditorWindow : EditorWindow
     [MenuItem("WiSdom/Data Editor")]
     public static void ShowWindow()
     {
-        GetWindow<DataEditorWindow>("Data Editor");
+        var window = GetWindow<DataEditorWindow>("Data Editor");
+        window.minSize = new Vector2(500, 400);
+        window.maxSize = new Vector2(500, 400);
     }
 
     private void OnGUI()
@@ -71,6 +73,9 @@ public class DataEditorWindow : EditorWindow
         if (GUILayout.Button("Update Script"))
         {
             GenerateDataManager();
+            // Reload
+            AssetDatabase.Refresh();
+
         }
 
         GUILayout.EndVertical();
