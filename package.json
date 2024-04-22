@@ -7,7 +7,7 @@
     "author": {
         "name": "WiSdom"
     },
-    "license": "GPL-3.0",
+    "license": "MIT",
     "category": "Unity",
     "repository": {
         "type": "git",
@@ -16,7 +16,5 @@
     "documentationUrl": "https://github.com/WiSdom2313/WiSdom-Tool-Suite/blob/main/README.md",
     "changelogUrl": "https://github.com/WiSdom2313/WiSdom-Tool-Suite/blob/main/CHANGELOG.md",
     "licenseUrl": "https://github.com/WiSdom2313/WiSdom-Tool-Suite/blob/main/LICENSE",
-    "dependencies": {
-        "com.cysharp.unitask": "2.5.4"
-    }
+    "dependencies": {}
 }
