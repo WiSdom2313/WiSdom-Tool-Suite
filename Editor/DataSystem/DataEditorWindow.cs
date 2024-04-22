@@ -80,6 +80,10 @@ public class DataEditorWindow : EditorWindow
 
         GUILayout.EndVertical();
         // Display all data
+        if(GUILayout.Button("Go to Data Manager"))
+        {
+            Selection.activeObject = DataManager.I;
+        }
 
         GUILayout.Space(10);
         // Display flags
