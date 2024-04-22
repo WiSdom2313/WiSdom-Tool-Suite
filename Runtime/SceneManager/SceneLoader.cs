@@ -7,55 +7,56 @@ namespace WiSdom.Core
     public class SceneLoader : SingletonMonoBehaviour<SceneLoader>
     {
 
-        protected override void Awake()
-        {
-            base.Awake();
-        }
-
-        // Load scene using traditional SceneManager
         public void LoadScene(string sceneName)
         {
             StartCoroutine(LoadSceneAsync(sceneName));
         }
 
+        public void LoadSceneWithTransition(string sceneName)
+        {
+            StartCoroutine(LoadSceneWithTransitionRoutine(sceneName));
+        }
+
+        private IEnumerator LoadSceneWithTransitionRoutine(string sceneName)
+        {
+            // Start the fade-out effect
+            SceneTransition.I.FadeOut();
+            yield return new WaitForSeconds(SceneTransition.I.fadeDuration);
+
+            // Load the new scene asynchronously
+            yield return StartCoroutine(LoadSceneAsync(sceneName));
+
+            // Once the scene is loaded, start the fade-in effect
+            SceneTransition.I.FadeIn();
+        }
+
         private IEnumerator LoadSceneAsync(string sceneName)
         {
             AsyncOperation asyncLoad = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(sceneName);
+            asyncLoad.allowSceneActivation = false;
 
             while (!asyncLoad.isDone)
             {
-                // Optionally update progress UI here
+                if (asyncLoad.progress >= 0.9f)
+                {
+                    asyncLoad.allowSceneActivation = true;
+                }
                 yield return null;
             }
         }
 
-        // // Load scene using Addressables
-        // public void LoadSceneAddressable(string sceneName)
-        // {
-        //     StartCoroutine(LoadSceneAddressableAsync(sceneName));
-        // }
-
-        // private IEnumerator LoadSceneAddressableAsync(string sceneName)
-        // {
-        //     AsyncOperationHandle<SceneInstance> handle = Addressables.LoadSceneAsync(sceneName, LoadSceneMode.Single);
-
-        //     while (!handle.IsDone)
-        //     {
-        //         // Optionally update progress UI here
-        //         yield return null;
-        //     }
-        // }
-
-        // Unload scene
         public void UnloadScene(string sceneName)
         {
-            UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync(sceneName);
+            StartCoroutine(UnloadSceneAsync(sceneName));
         }
 
-        // // Unload scene using Addressables
-        // public void UnloadSceneAddressable(string sceneName)
-        // {
-        //     Addressables.UnloadSceneAsync(Addressables.LoadSceneAsync(sceneName, LoadSceneMode.Single));
-        // }
+        private IEnumerator UnloadSceneAsync(string sceneName)
+        {
+            AsyncOperation asyncUnload = UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync(sceneName);
+            while (!asyncUnload.isDone)
+            {
+                yield return null;
+            }
+        }
     }
 }
