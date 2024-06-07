@@ -36,7 +36,7 @@ namespace WiSdom.DesignPattern
                 Destroy(gameObject);
             }
         }
-        public bool IsInstanceValid()
+        public static bool IsInstanceValid()
         {
             return _instance != null;
         }

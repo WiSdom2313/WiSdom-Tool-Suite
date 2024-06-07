@@ -103,11 +103,11 @@ public class PluginManagerEditor : EditorWindow
         }
 
         EditorGUILayout.EndVertical(); // End vertical grouping
-        if (GUILayout.Button("Add New Plugin"))
+        if (GUILayout.Button("+", GUILayout.Width(30), GUILayout.Height(30)))
         {
             AddNewPlugin();
         }
-        EditorGUILayout.EndScrollView();
+
 
         if (GUILayout.Button("Save Changes"))
         {
@@ -125,7 +125,7 @@ public class PluginManagerEditor : EditorWindow
                 {
                     if (PlayerSettings.GetScriptingDefineSymbolsForGroup(EditorUserBuildSettings.selectedBuildTargetGroup).Contains(plugin.DefineSymbol))
                     {
-                        PlayerSettings.SetScriptingDefineSymbolsForGroup(EditorUserBuildSettings.selectedBuildTargetGroup, PlayerSettings.GetScriptingDefineSymbolsForGroup(EditorUserBuildSettings.selectedBuildTargetGroup).Replace(plugin.DefineSymbol, ""));
+                        PlayerSettings.SetScriptingDefineSymbolsForGroup(EditorUserBuildSettings.selectedBuildTargetGroup, PlayerSettings.GetScriptingDefineSymbolsForGroup(EditorUserBuildSettings.selectedBuildTargetGroup).Replace($";{plugin.DefineSymbol}", ""));
                     }
                 }
             }
@@ -135,6 +135,9 @@ public class PluginManagerEditor : EditorWindow
             AssetDatabase.Refresh();
             message = "Changes saved!";
         }
+
+        EditorGUILayout.EndScrollView();
+
     }
 
     private void AddNewPlugin()
