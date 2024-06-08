@@ -18,4 +18,4 @@ MonoBehaviour:
     DefineSymbol: USE_ADDRESSABLES
   - Name: 2
     IsEnable: 0
-    DefineSymbol: USE_MEMORYPACKJSON
+    DefineSymbol: USE_MESSAGEPACK
